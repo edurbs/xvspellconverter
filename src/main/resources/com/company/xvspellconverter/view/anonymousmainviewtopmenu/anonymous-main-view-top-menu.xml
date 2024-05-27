@@ -8,7 +8,6 @@
         </instance>
     </data>
     <actions>
-        <action id="login" icon="SIGN_IN" type="logout"/>
     </actions>
     <appLayout classNames="jmix-main-view-top-menu-app-layout">
         <navigationBar>
@@ -22,20 +21,9 @@
                 <hbox>
                     <button text="Converter" icon="ROCKET" id="buttonConvert"/>
                     <button text="Limpar" icon="REFRESH" id="buttonClean"/>
+                    <button id="loginButton" alignSelf="END" text="Login" icon="SIGN_IN"/>
                 </hbox>
                 <textArea minWidth="95%" readOnly="true" minHeight="200px" id="textAreaTo"/>
-                <button id="loginButton" action="login" alignSelf="END"/>
-                <header id="navigationHeader"
-                        classNames="jmix-main-view-top-menu-header" minWidth="100%">
-                    <hbox id="userHeaderBox"
-                          classNames="jmix-main-view-top-menu-user-box">
-                    </hbox>
-                </header>
-                <hbox id="viewHeaderBox"
-                      classNames="jmix-main-view-top-menu-view-header-box">
-                    <h1 id="viewTitle"
-                        classNames="jmix-main-view-top-menu-view-title" text="A"/>
-                </hbox>
             </vbox>
         </navigationBar>
         <initialLayout/>
