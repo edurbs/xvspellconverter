@@ -4,6 +4,7 @@
     <menu id="application" title="msg://com.company.xvspellconverter/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.company.xvspellconverter.view.user/UserListView.title"/>
         <item view="Word.list" title="msg://com.company.xvspellconverter.view.word/wordListView.title"/>
+        <item view="AnonymousMainViewTopMenu" title="Anonymous"/>
     </menu>
 
 </menu-config>
