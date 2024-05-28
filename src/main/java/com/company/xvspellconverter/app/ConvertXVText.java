@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Component
@@ -20,6 +21,7 @@ public class ConvertXVText {
     private DataManager dataManager;
 
     public String execute(String textToConvert){
+        finalText.setLength(0);
         /*if (dataManager == null) {
             throw new BusinessException("dataManager is null");
         }
@@ -52,20 +54,35 @@ public class ConvertXVText {
     }
 
     private String convertLetters(String word){
-        word = word.replace("s", "ts");
-        word = word.replace("S", "Ts");
-        word = word.replace("z", "dz");
-        word = word.replace("Z", "Dz");
+        Pattern iFirstPersonLowerCase = Pattern.compile("(^| )ĩ", Pattern.CANON_EQ);
+        word = iFirstPersonLowerCase.matcher(word).replaceAll("ĩ̱");
+        Pattern iFirstPersonUpperCase = Pattern.compile("(^| )Ĩ", Pattern.CANON_EQ);
+        word = iFirstPersonUpperCase.matcher(word).replaceAll("Ĩ̱");
+        Pattern iThirdPersonLowerCase = Pattern.compile("(^| )i", Pattern.CANON_EQ);
+        word = iThirdPersonLowerCase.matcher(word).replaceAll("ĩ");
+        Pattern iThirdPersonUpperCase = Pattern.compile("(^| )I", Pattern.CANON_EQ);
+        word = iThirdPersonUpperCase.matcher(word).replaceAll("Ĩ");
+        word = replaceLetter(word, "Z[A-ZÀ-ÖØ-ÝĀ-Ž]", "DZ");
+        word = replaceLetter(word, "z[a-zà-öø-ýā-ž]", "dz");
+        word = replaceLetter(word, "Z[a-zà-öø-ýā-ž]", "Dz");
+        word = replaceLetter(word, "S[A-ZÀ-ÖØ-ÝĀ-Ž]", "TS");
+        word = replaceLetter(word, "s[a-zà-öø-ýā-ž]", "ts");
+        word = replaceLetter(word, "S[a-zà-öø-ýā-ž]", "Ts");
         word = word.replace("â", "ö");
         word = word.replace("Â", "Ö");
-        Pattern iFirstPersonLowerCase = Pattern.compile("(^|\s)ĩ", Pattern.CANON_EQ);
-        word = iFirstPersonLowerCase.matcher(word).replaceAll("ĩ̱");
-        Pattern iFirstPersonUpperCase = Pattern.compile("(^|\s)Ĩ", Pattern.CANON_EQ);
-        word = iFirstPersonUpperCase.matcher(word).replaceAll("Ĩ̱");
-        Pattern iThirdPersonLowerCase = Pattern.compile("(^|\s)i", Pattern.CANON_EQ);
-        word = iThirdPersonLowerCase.matcher(word).replaceAll("ĩ");
-        Pattern iThirdPersonUpperCase = Pattern.compile("(^|\s)I", Pattern.CANON_EQ);
-        word = iThirdPersonUpperCase.matcher(word).replaceAll("Ĩ");
+        return word;
+    }
+
+    private static String replaceLetter(String word, String regex, String replaceWith) {
+        Pattern lowerCaseS = Pattern.compile(regex);
+        Matcher matcher = lowerCaseS.matcher(word);
+        StringBuilder sb = new StringBuilder();
+        while (matcher.find()) {
+            String matchedLetter = matcher.group(0);
+            matcher.appendReplacement(sb, replaceWith + matchedLetter.substring(1));
+        }
+        matcher.appendTail(sb);
+        word = sb.toString();
         return word;
     }
 
