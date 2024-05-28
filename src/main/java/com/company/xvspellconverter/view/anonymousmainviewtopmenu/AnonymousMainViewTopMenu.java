@@ -53,8 +53,7 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
             return;
         }
         var convertXVText = new ConvertXVText();
-        convertXVText.convert(textFrom);
-        textAreaTo.setValue(convertXVText.getFinalText());
+        textAreaTo.setValue(convertXVText.execute(textFrom));
     }
 
     @Override
