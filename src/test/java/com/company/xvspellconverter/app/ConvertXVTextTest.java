@@ -1,18 +1,22 @@
 package com.company.xvspellconverter.app;
 
-import org.junit.jupiter.api.BeforeAll;
+import com.company.xvspellconverter.test_support.AuthenticatedAsAdmin;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
+@SpringBootTest
+@ExtendWith(AuthenticatedAsAdmin.class)
 class ConvertXVTextTest {
 
-    static private ConvertXVText convertXVText;
+    @Autowired
+    ConvertXVText convertXVText;
 
-    @BeforeAll
-    static void setup(){
-        convertXVText = new ConvertXVText();
-    }
+
 
     @Test
     void shouldConvertZtoDZ() {

@@ -37,6 +37,8 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
     private JmixTextArea textAreaTo;
     @Autowired
     private ViewNavigators viewNavigators;
+    @Autowired
+    private ConvertXVText convertXVText;
 
     @Subscribe(id = "buttonClean", subject = "clickListener")
     public void onButtonCleanClick(final ClickEvent<JmixButton> event) {
@@ -52,7 +54,6 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
             notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
             return;
         }
-        var convertXVText = new ConvertXVText();
         textAreaTo.setValue(convertXVText.execute(textFrom));
     }
 

@@ -2,6 +2,7 @@ package com.company.xvspellconverter.app;
 
 import com.company.xvspellconverter.entity.Word;
 import io.jmix.core.DataManager;
+import io.jmix.core.querycondition.PropertyCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,6 @@ import java.util.regex.Pattern;
 @Component
 public class ConvertXVText {
 
-    private List<String> namesFrom;
-    private List<String> namesTarget;
     private final StringBuilder finalText = new StringBuilder();
 
     @Autowired
@@ -22,15 +21,11 @@ public class ConvertXVText {
 
     public String execute(String textToConvert){
         finalText.setLength(0);
-        /*if (dataManager == null) {
-            throw new BusinessException("dataManager is null");
-        }
-        this.namesFrom = dataManager.load(Word.class).all().list().stream().map(Word::getFrom).toList();
-        this.namesTarget = dataManager.load(Word.class).all().list().stream().map(Word::getTo).toList();*/
+
 
         textToConvert = cleanText(textToConvert);
         List<String> words = Arrays.asList(textToConvert.split("(?=[.,:;! “”‘’()—\\n\\r])|(?<=[.,:;! “”‘’()—\\n\\r])"));
-        words.forEach(this::convertWord);
+        words.forEach(this::convert);
         return finalText.toString();
     }
 
@@ -44,11 +39,11 @@ public class ConvertXVText {
         return textToConvert;
     }
 
-    private void convertWord(String word){
+    private void convert(String word){
         if(!word.isBlank()){
             word = convertLetters(word);
-            //word = convertNameWithSuffix(word);
-            //word = convertName(word);
+            word = convertWordWithSuffix(word);
+            word = convertWord(word);
         }
         finalText.append(word);
     }
@@ -86,39 +81,37 @@ public class ConvertXVText {
         return word;
     }
 
-    private String convertName(String nameToConvert){
-        if(nameToConvert.length()>1){
-            var index = namesFrom.indexOf(nameToConvert);
-            if(index>0){
-                return getNameConverted(index);
+    private String convertWord(String wordToConvert){
+        if(wordToConvert.length()>1){
+            Word word = dataManager.load(Word.class)
+                    .condition(PropertyCondition.equal("from", wordToConvert))
+                    .optional()
+                    .orElse(null);
+            if(word!=null){
+                wordToConvert = word.getTo();
             }
         }
-        return nameToConvert;
+        return wordToConvert;
     }
 
-    private String getNameConverted(int index) {
-        try {
-            return namesTarget.get(index);
-        } catch (IndexOutOfBoundsException  e) {
-            throw new BusinessException("Name found on the list, but not found the respective pair.", e);
-        }
 
-    }
-
-    private String convertNameWithSuffix(String nameToConvert){
-        var nameLength = nameToConvert.length();
-        if (!nameToConvert.isBlank()) {
-            var lastChar = nameToConvert.charAt(nameLength - 1);
+    private String convertWordWithSuffix(String wordToConvert){
+        var wordLength = wordToConvert.length();
+        if (!wordToConvert.isBlank()) {
+            var lastChar = wordToConvert.charAt(wordLength - 1);
             var suffix = "h" + lastChar;
-            if (nameToConvert.endsWith(suffix)) {
-                var nameWithoutSuffix = nameToConvert.substring(0, nameLength-2);
-                var index = namesFrom.indexOf(nameWithoutSuffix);
-                if (index > 0) {
-                    return getNameConverted(index);
+            if (wordToConvert.endsWith(suffix)) {
+                var wordWithoutSuffix = wordToConvert.substring(0, wordLength-2);
+                Word word = dataManager.load(Word.class)
+                        .condition(PropertyCondition.equal("from", wordWithoutSuffix))
+                        .optional()
+                        .orElse(null);
+                if(word!=null){
+                    wordToConvert = word.getTo();
                 }
             }
         }
-        return nameToConvert;
+        return wordToConvert;
     }
 
 
