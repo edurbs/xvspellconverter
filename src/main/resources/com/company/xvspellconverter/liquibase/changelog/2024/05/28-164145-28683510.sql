@@ -556,3 +556,13 @@ insert into word (id,uuid,from_, to_) values (	555	,	'42DCB838-64E6-D483-4FC9-17
 insert into word (id,uuid,from_, to_) values (	556	,	'F8017FB6-A1A9-75A9-7690-EE24A160249E'	,'Etsdra'	,	'Esdras'	);
 insert into word (id,uuid,from_, to_) values (	557	,	'EF1902DD-7CA8-2166-735D-489D0091CED3'	,'Babilonia '	,	'Babilônia'	);
 insert into word (id,uuid,from_, to_) values (	558	,	'5F6EF3A3-077C-908B-4730-FDC053EB2835'	,'Tseraiaha'	,	'Seraías'	);
+
+CREATE SEQUENCE IF NOT EXISTS public.seq_id_word
+    INCREMENT 1
+    START 0
+    MINVALUE 0
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+SELECT setval('public.seq_id_word', 559, true);
+ALTER SEQUENCE IF EXISTS public.seq_id_word
+    INCREMENT 1;
