@@ -1,3 +1,4 @@
+
 insert into word (id,uuid,from_, to_) values (	1	,	'DE4A4CDB-70EB-8E20-7816-1B2840359553'	,'Teofilu'	,	'Teófilo'	);
 insert into word (id,uuid,from_, to_) values (	2	,	'D192048A-CEA7-0E79-2A15-40FA204E8F90'	,'Provébius'	,	'Provérbios'	);
 insert into word (id,uuid,from_, to_) values (	3	,	'E954CF9D-CF18-9F9D-E683-2D394331A247'	,'Filipi'	,	'Filipe'	);

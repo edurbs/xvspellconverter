@@ -2,25 +2,16 @@ package com.company.xvspellconverter.app;
 
 import com.company.xvspellconverter.app.gateway.GetWordGateway;
 import com.company.xvspellconverter.app.usecase.ConvertUseCase;
-import com.company.xvspellconverter.infra.entity.Word;
 import com.company.xvspellconverter.infra.gateway.GetWordRepositoryGateway;
-import com.company.xvspellconverter.infra.repository.WordRepository;
 import com.company.xvspellconverter.test_support.AuthenticatedAsAdmin;
 import io.jmix.core.DataManager;
-import io.jmix.core.FluentLoader;
-import io.jmix.core.querycondition.PropertyCondition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.internal.matchers.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ExtendWith(AuthenticatedAsAdmin.class)

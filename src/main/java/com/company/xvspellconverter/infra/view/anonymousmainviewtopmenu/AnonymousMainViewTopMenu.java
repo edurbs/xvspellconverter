@@ -4,7 +4,6 @@ package com.company.xvspellconverter.infra.view.anonymousmainviewtopmenu;
 import com.company.xvspellconverter.app.gateway.GetWordGateway;
 import com.company.xvspellconverter.app.usecase.ConvertUseCase;
 import com.company.xvspellconverter.infra.gateway.GetWordRepositoryGateway;
-import com.company.xvspellconverter.infra.repository.WordRepository;
 import com.company.xvspellconverter.infra.view.login.LoginView;
 import com.google.common.base.Strings;
 import com.vaadin.flow.component.ClickEvent;
