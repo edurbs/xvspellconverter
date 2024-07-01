@@ -1,6 +1,6 @@
 package com.company.xvspellconverter.user;
 
-import com.company.xvspellconverter.entity.User;
+import com.company.xvspellconverter.infra.entity.User;
 import com.company.xvspellconverter.test_support.AuthenticatedAsAdmin;
 import io.jmix.core.DataManager;
 import io.jmix.core.security.UserRepository;

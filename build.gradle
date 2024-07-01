@@ -1,5 +1,5 @@
 plugins {
-    id 'io.jmix' version '2.2.3'
+    id 'io.jmix' version '2.3.0'
     id 'java'
 }
 
@@ -7,11 +7,11 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'com.vaadin'
 
 jmix {
-    bomVersion = '2.2.3'
+    bomVersion = '2.3.0'
 }
 
 group = 'com.company'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 repositories {
     mavenCentral()
@@ -41,6 +41,10 @@ dependencies {
     }
     testImplementation 'io.jmix.flowui:jmix-flowui-test-assist'
     implementation 'org.postgresql:postgresql'
+
+    // https://mvnrepository.com/artifact/org.mapstruct/mapstruct
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
+
 }
 
 test {
@@ -49,4 +53,5 @@ test {
 
 vaadin {
     optimizeBundle = false
+    productionMode = true
 }
