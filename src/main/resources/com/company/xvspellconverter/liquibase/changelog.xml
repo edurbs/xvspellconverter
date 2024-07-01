@@ -11,6 +11,9 @@
     <include file="/io/jmix/flowuidata/liquibase/changelog.xml"/>
     <include file="/io/jmix/securitydata/liquibase/changelog.xml"/>
 
-    <includeAll path="/com/company/xvspellconverter/liquibase/changelog"/>
+<!--    <includeAll path="/com/company/xvspellconverter/liquibase/changelog"/>-->
+    <include file="/com/company/xvspellconverter/liquibase/changelog/010-init-user.xml"/>
+    <include file="/com/company/xvspellconverter/liquibase/changelog/2024/07/01-112450-28683510.xml"/>
+    <include file="/com/company/xvspellconverter/liquibase/changelog/2024/07/28-164145-28683510.sql"/>
 
 </databaseChangeLog>

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="IgnoredChangelogIncludeConfig">
+    <datastore-include-infos>
+      <datastore-include-info datastore-name="main">
+        <ignored-unexpected-paths>
+          <ignored-path path="/com/company/xvspellconverter/liquibase/changelog/2024/07/28-164145-28683510.sql" />
+        </ignored-unexpected-paths>
+      </datastore-include-info>
+    </datastore-include-infos>
+  </component>
   <component name="JmixDataStoreSettingsManager">
     <moduleSettings>
       <entry key="com.company.xvspellconverter.main">

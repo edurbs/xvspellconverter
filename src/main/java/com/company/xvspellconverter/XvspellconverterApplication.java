@@ -29,7 +29,7 @@ import javax.sql.DataSource;
 @Theme(value = "xvspellconverter")
 @PWA(name = "Xvspellconverter", shortName = "Xvspellconverter")
 @SpringBootApplication
-@EnableJmixDataRepositories
+//@EnableJmixDataRepositories
 public class XvspellconverterApplication implements AppShellConfigurator {
 
     @Autowired

@@ -2,8 +2,8 @@
 <menu-config xmlns="http://jmix.io/schema/flowui/menu">
 
     <menu id="application" title="msg://com.company.xvspellconverter/menu.application.title" opened="true">
-        <item view="User.list" title="msg://com.company.xvspellconverter.view.user/UserListView.title"/>
-        <item view="Word.list" title="msg://com.company.xvspellconverter.view.word/wordListView.title"/>
+        <item view="User.list" title="msg://Lista de usuários"/>
+        <item view="Word.list" title="msg://Lista de palavras"/>
         <item view="AnonymousMainViewTopMenu" title="Anonymous"/>
     </menu>
 
