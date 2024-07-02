@@ -66,7 +66,6 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
         String textConverted =convertXVText.execute(textFrom);
         textAreaTo.setValue(textConverted);
 
-        // TODO copy to cliboard
         String textAreaFinal = "textAreaFinal";
         textAreaTo.setId(textAreaFinal);
         textAreaTo.focus();
