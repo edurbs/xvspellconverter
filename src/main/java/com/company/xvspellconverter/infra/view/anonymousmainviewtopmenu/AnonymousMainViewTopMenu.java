@@ -80,7 +80,7 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
             ui.getPage().executeJs(script);
             Notification notification = Notification
                     .show("Copiado para a área de transferência");
-            notification.addThemeVariants(NotificationVariant.LUMO_ERROR);
+            notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
         });
 
     }
