@@ -50,6 +50,7 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
     @Subscribe(id = "buttonClean", subject = "clickListener")
     public void onButtonCleanClick(final ClickEvent<JmixButton> event) {
         textAreaFrom.setValue("");
+        textAreaTo.setValue("");
     }
 
     @Subscribe(id = "buttonConvert", subject = "clickListener")
@@ -95,6 +96,6 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
 
     @Subscribe(id = "loginButton", subject = "clickListener")
     public void onLoginButtonClick(final ClickEvent<JmixButton> event) {
-        viewNavigators.view(new LoginView(), LoginView.class);
+        viewNavigators.view(this, LoginView.class).navigate();
     }
 }
