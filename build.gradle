@@ -50,6 +50,7 @@ dependencies {
     implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.5.5.Final'
 
     implementation 'io.jmix.translations:jmix-translations-pt-br'
+    implementation 'io.jmix.rest:jmix-rest-starter'
 }
 
 test {
