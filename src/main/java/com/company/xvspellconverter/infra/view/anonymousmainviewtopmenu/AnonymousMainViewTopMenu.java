@@ -82,6 +82,7 @@ public class AnonymousMainViewTopMenu extends StandardMainView {
                     .show("Copiado para a área de transferência");
             notification.addThemeVariants(NotificationVariant.LUMO_SUCCESS);
         });
+        textAreaFrom.setValue("");
 
     }
 
