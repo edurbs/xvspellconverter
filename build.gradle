@@ -60,5 +60,5 @@ test {
 
 vaadin {
     optimizeBundle = false
-    productionMode = false
+    productionMode = true
 }
