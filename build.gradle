@@ -51,6 +51,7 @@ dependencies {
 
     implementation 'io.jmix.translations:jmix-translations-pt-br'
     implementation 'io.jmix.rest:jmix-rest-starter'
+    implementation 'io.jmix.authserver:jmix-authserver-starter'
 }
 
 test {
@@ -59,5 +60,5 @@ test {
 
 vaadin {
     optimizeBundle = false
-    productionMode = true
+    productionMode = false
 }
