@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <main class="converter">
+      <h1>Conversor de Grafia Xavante</h1>
+      <textarea
+        id="textAreaFrom"
+        placeholder="Cole aqui o texto para converter"
+        autofocus
+      ></textarea>
+      <div class="buttons">
+        <button id="buttonConvert" type="button">Converter</button>
+        <button id="buttonClean" type="button">Limpar</button>
+      </div>
+      <div id="notification" role="status" aria-live="polite" hidden></div>
+      <textarea id="textAreaTo" readonly></textarea>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
