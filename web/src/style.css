@@ -1,7 +1,42 @@
 :root {
+  color-scheme: light dark;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  color: #1a1a1a;
-  background-color: #fafafa;
+
+  --bg: #fafafa;
+  --text: #1a1a1a;
+  --surface: #ffffff;
+  --border: #d0d0d0;
+  --btn-bg: #ffffff;
+  --btn-text: #1a1a1a;
+  --btn-border: #c8c8c8;
+  --btn-bg-hover: #f1f1f1;
+  --notif-bg-success: #e6f4ea;
+  --notif-text-success: #137333;
+  --notif-bg-error: #fce8e6;
+  --notif-text-error: #c5221f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131314;
+    --text: #e3e3e6;
+    --surface: #1e1e20;
+    --border: #44464a;
+    --btn-bg: #2a2b2f;
+    --btn-text: #e3e3e6;
+    --btn-border: #4a4c50;
+    --btn-bg-hover: #333438;
+    --notif-bg-success: #1e3629;
+    --notif-text-success: #7ee29a;
+    --notif-bg-error: #3b1e1e;
+    --notif-text-error: #f28b82;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 .converter {
@@ -27,6 +62,10 @@ textarea {
   padding: 0.5rem;
   font-size: 1rem;
   resize: vertical;
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
 }
 
 .buttons {
@@ -39,19 +78,27 @@ button {
   padding: 0.5rem 1.25rem;
   font-size: 1rem;
   cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: var(--btn-bg-hover);
 }
 
 #notification {
   text-align: center;
   padding: 0.5rem;
   border-radius: 4px;
-  background-color: #e6f4ea;
-  color: #137333;
+  background-color: var(--notif-bg-success);
+  color: var(--notif-text-success);
 }
 
 #notification.error {
-  background-color: #fce8e6;
-  color: #c5221f;
+  background-color: var(--notif-bg-error);
+  color: var(--notif-text-error);
 }
 
 [hidden] {
