@@ -1,6 +1,7 @@
 import './style.css';
 import { convertText } from './converter';
 import { loadDictionary } from './dictionary';
+import { copyText } from './clipboard';
 
 const dictionary = loadDictionary();
 
@@ -32,10 +33,13 @@ buttonConvert.addEventListener('click', () => {
   textAreaTo.value = textConverted;
   textAreaTo.focus();
   textAreaTo.select();
-  navigator.clipboard
-    .writeText(textConverted)
-    .then(() => showNotification('Copiado para a área de transferência'))
-    .catch(() => showNotification('Não foi possível copiar automaticamente'));
+  copyText(textConverted).then((status) => {
+    if (status === 'copied') {
+      showNotification('Copiado para a área de transferência');
+    } else {
+      showNotification('Não foi possível copiar automaticamente');
+    }
+  });
 });
 
 buttonClean.addEventListener('click', () => {
